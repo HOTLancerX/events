@@ -15,6 +15,7 @@ export interface EventGridUIProps {
     columnsMobile?: number;
     gapDesktop?: number;
     boxStyle?: string;
+    permalinkMap?: Record<string, string>;
     style?: {
         titleColor?: string;
         subtitleColor?: string;
@@ -35,6 +36,7 @@ export default function EventGridUI({
     columnsMobile = 1,
     gapDesktop = 6,
     boxStyle = "box-1",
+    permalinkMap = {},
     style = {},
 }: EventGridUIProps) {
     if (!events || events.length === 0) {
@@ -96,7 +98,7 @@ export default function EventGridUI({
 
                 <div className={`grid ${mobileColsClass} ${tabletColsClass} ${gridColsClass} gap-6`}>
                     {events.map((ev: any, idx: number) => (
-                        <BoxComponent key={ev._id || `ev-${idx}`} item={ev} />
+                        <BoxComponent key={ev._id || `ev-${idx}`} item={ev} permalinkMap={permalinkMap} />
                     ))}
                 </div>
 

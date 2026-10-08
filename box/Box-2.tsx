@@ -9,6 +9,9 @@ export interface EventBoxProps {
     data?: any;
     itemUrl?: string;
     postUrl?: string;
+    eventUrl?: string;
+    productUrl?: string;
+    permalinkMap?: Record<string, string>;
 }
 
 function parseJson<T>(raw: string | undefined, fallback: T): T {
@@ -23,7 +26,12 @@ function parseJson<T>(raw: string | undefined, fallback: T): T {
 export default function EventBox2(props: EventBoxProps) {
     const item = props.item || props.data || {};
     const info = item.info || {};
-    const targetUrl = props.itemUrl || props.postUrl || (item.slug ? `/${item.slug}` : "#");
+    const slug = item.slug || (item._id ? String(item._id) : "");
+    const permalinkMap = props.permalinkMap || {};
+    const contentType = item.type || "event";
+    const prefix = (permalinkMap[contentType] ?? permalinkMap["event"] ?? permalinkMap["events"] ?? contentType).trim().replace(/^\/+|\/+$/g, "");
+    const dynamicUrl = slug ? (prefix ? `/${prefix}/${slug}` : `/${slug}`) : "#";
+    const targetUrl = props.itemUrl || props.postUrl || props.eventUrl || props.productUrl || dynamicUrl;
 
     const images = parseJson<string[]>(info.images, []);
     const cover = images[0] || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&auto=format&fit=crop";

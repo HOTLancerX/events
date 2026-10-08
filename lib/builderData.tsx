@@ -154,7 +154,7 @@ async function loadEventSchedule(eventId?: string): Promise<{ eventTitle: string
 }
 
 // ── 1. Events Grid Server Renderer ──
-registerBuilderElement("events-grid", async (schema) => {
+registerBuilderElement("events-grid", async (schema, data) => {
     const c = schema?.content || {};
     const g = schema?.grid || {};
 
@@ -175,6 +175,7 @@ registerBuilderElement("events-grid", async (schema) => {
             columnsMobile={g.columnsMobile ?? 1}
             gapDesktop={g.gapDesktop ?? 6}
             boxStyle={c.boxStyle ?? "box-1"}
+            permalinkMap={data?.permalinkMap}
             style={s}
         />
     );
@@ -200,7 +201,7 @@ registerBuilderElement("events-schedule-timeline", async (schema) => {
 });
 
 // ── 3. Events Carousel Slider Server Renderer ──
-registerBuilderElement("events-carousel", async (schema) => {
+registerBuilderElement("events-carousel", async (schema, data) => {
     const c = schema?.content || {};
     const sl = schema?.slider || {};
 
@@ -223,6 +224,7 @@ registerBuilderElement("events-carousel", async (schema) => {
             showArrows={sl.showArrows ?? true}
             showDots={sl.showDots ?? true}
             boxStyle={c.boxStyle ?? "box-1"}
+            permalinkMap={data?.permalinkMap}
             style={s}
         />
     );

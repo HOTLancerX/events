@@ -76,7 +76,7 @@ export default function EventScheduleTimelineUI({
                     {title && (
                         <h2
                             style={{ color: titleColor || undefined }}
-                            className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-950 tracking-tight"
+                            className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-950 tracking-tight"
                         >
                             {title}
                         </h2>
@@ -84,7 +84,7 @@ export default function EventScheduleTimelineUI({
                     {subtitle && (
                         <p
                             style={{ color: subtitleColor || undefined }}
-                            className="text-sm sm:text-base text-slate-500 font-medium"
+                            className="text-md md:text-base text-slate-500 font-medium"
                         >
                             {subtitle}
                         </p>
@@ -136,14 +136,14 @@ export default function EventScheduleTimelineUI({
                 {/* Timeline Sessions List */}
                 <div
                     style={{ borderColor: timelineColor || undefined }}
-                    className="relative pl-6 sm:pl-8 border-l-2 border-amber-400 space-y-4"
+                    className="relative pl-6 md:pl-8 border-l-2 border-amber-400 space-y-4"
                 >
                     {sessions.map((ses, sIdx) => (
                         <div key={ses.id || sIdx} className="relative group">
                             {/* Glowing Timeline Node */}
                             <div
                                 style={{ backgroundColor: timelineColor || undefined }}
-                                className="absolute -left-[31px] sm:-left-[39px] top-4 w-4 h-4 rounded-full bg-amber-500 border-3 border-white shadow-md group-hover:scale-125 transition-transform"
+                                className="absolute -left-7.75 md:-left-9.75 top-4 w-4 h-4 rounded-full bg-amber-500 border-3 border-white shadow-md group-hover:scale-125 transition-transform"
                             />
 
                             <div
@@ -151,7 +151,7 @@ export default function EventScheduleTimelineUI({
                                     backgroundColor: sessionCardBg || undefined,
                                     borderColor: sessionCardBorder || undefined,
                                 }}
-                                className="bg-white hover:bg-amber-50/20 p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs hover:border-amber-300 hover:shadow-md transition-all space-y-2.5"
+                                className="bg-white hover:bg-amber-50/20 p-5 md:p-6 rounded-3xl border border-slate-200/80 shadow-xs hover:border-amber-300 hover:shadow-md transition-all space-y-2.5"
                             >
                                 <div className="flex flex-wrap items-center justify-between gap-2">
                                     <span
@@ -172,12 +172,12 @@ export default function EventScheduleTimelineUI({
                                     )}
                                 </div>
 
-                                <h3 className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
+                                <h3 className="text-base md:text-lg font-extrabold text-slate-900 leading-snug">
                                     {ses.title}
                                 </h3>
 
                                 {ses.description && (
-                                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                                    <p className="text-xs md:text-md text-slate-600 leading-relaxed font-normal">
                                         {ses.description}
                                     </p>
                                 )}

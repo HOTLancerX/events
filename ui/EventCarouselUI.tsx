@@ -18,6 +18,7 @@ export interface EventCarouselUIProps {
     showArrows?: boolean;
     showDots?: boolean;
     boxStyle?: string;
+    permalinkMap?: Record<string, string>;
     style?: {
         titleColor?: string;
         subtitleColor?: string;
@@ -44,6 +45,7 @@ export default function EventCarouselUI({
     showArrows = true,
     showDots = true,
     boxStyle = "box-1",
+    permalinkMap = {},
     style = {},
 }: EventCarouselUIProps) {
     if (!events || events.length === 0) {
@@ -189,7 +191,7 @@ export default function EventCarouselUI({
                                 key={ev._id || `ev-slide-${idx}`}
                                 className={`min-w-0 pl-4 sm:pl-6 shrink-0 ${mobileFlexClass} ${tabletFlexClass} ${desktopFlexClass}`}
                             >
-                                <BoxComponent item={ev} />
+                                <BoxComponent item={ev} permalinkMap={permalinkMap} />
                             </div>
                         ))}
                     </div>
